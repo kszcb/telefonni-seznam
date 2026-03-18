@@ -182,17 +182,17 @@
     .controls { padding: 14px 16px 10px; }
     .filter-label { display: none; }
     .search-wrap { max-width: 100%; }
-    .table-wrap { margin: 0 12px 28px; }
     footer { padding: 0 16px 24px; font-size: 11px; }
 
     /* Na mobilu schovej tabulku, zobraz karty */
-    #dirTable { display: none; }
+    .table-wrap { display: none; }
     #mobileCards { display: flex; flex-direction: column; gap: 10px; padding: 12px; }
   }
 
   /* Na desktopu schovej karty */
   @media (min-width: 901px) {
     #mobileCards { display: none; }
+    .table-wrap { display: block; }
   }
 
   /* ── KARTA ZAMĚSTNANCE ──────────────────────── */
