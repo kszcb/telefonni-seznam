@@ -444,9 +444,17 @@ const deptColors = {
 const avatarPalette = ["#0f1f3d","#1565c0","#2e7d5e","#7b3fa0","#c0392b","#e67e22","#16a085","#8e44ad"];
 
 function initials(name) {
-  return name.replace(/[^a-zA-ZÀ-ž\s]/g,"").trim()
-    .split(/\s+/).filter(p => p.length > 1)
-    .map(p => p[0]).join("").slice(0,2).toUpperCase();
+  const tituly = new Set([
+    "ing","mgr","bc","bca","mga","mba","phd","doc","prof",
+    "judr","mudr","rndr","paeddr","thdr","thlic","dipl",
+    "dis","msc","llm","dr"
+  ]);
+  const parts = name
+    .replace(/\./g, " ")          // tečky → mezery (Ing. → Ing )
+    .trim()
+    .split(/\s+/)
+    .filter(p => p.length > 0 && !tituly.has(p.toLowerCase()));
+  return parts.map(p => p[0]).join("").slice(0,2).toUpperCase();
 }
 
 function avatarColor(name) {
