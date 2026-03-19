@@ -262,9 +262,11 @@
     text-transform: uppercase;
     letter-spacing: 0.04em;
   }
+
 </style>
 </head>
 <body>
+
 
 <header>
   <div class="logo">
@@ -315,7 +317,7 @@
   </div>
 </div>
 
-<div id="mobileCards"></div>
+<div id="mobileCards">
 
 <footer>
   Aktualizováno: <span id="updateDate"></span> &nbsp;·&nbsp; Platné od 1. 1. 2026 &nbsp;·&nbsp; Interní dokument – Kultura a sport
@@ -334,18 +336,17 @@ const employees = [
   { name:"Ing. Bc. Adéla Vojáčková",        position:"Manažer digitální komunikace a správy systémů", oblast:"Celá organizace", dept:"IT",             place:"Sportovní hala",      phone:"607 016 207", landline:"386 107 184", email:"vojackovaa@kszcb.cz" },
   { name:"Mgr. Tereza Bufková",             position:"Právník",                                       oblast:"Celá organizace", dept:"Administrativa", place:"Zimní stadion",       phone:"720 870 313", landline:"386 107 114", email:"bufkovat@kszcb.cz" },
   { name:"Iva Ludvíková",                   position:"Personalistika a mzdy",                         oblast:"Celá organizace", dept:"Personální",     place:"Zimní stadion",       phone:"777 871 158", landline:"386 107 118", email:"ludvikovai@kszcb.cz" },
-  { name:"Lenka Turečková",                 position:"Ekonomický náměstek",                           oblast:"Sport",           dept:"Ekonomika",     place:"Zimní stadion",       phone:"602 248 178", landline:"386 107 102", email:"tureckoval@kszcb.cz" },
-  { name:"Michaela Hotová",                 position:"Hlavní účetní",                                 oblast:"Sport",           dept:"Ekonomika",     place:"Zimní stadion",       phone:"739 967 913", landline:"386 107 116", email:"hotovam@kszcb.cz" },
-  { name:"Iveta Poutníková",                position:"Finanční účetní",                               oblast:"Sport",           dept:"Ekonomika",     place:"Zimní stadion",       phone:"606 715 892", landline:"386 107 115", email:"poutnikovai@kszcb.cz" },
-  { name:"Veronika Jungwirtová",            position:"Účetní",                                        oblast:"Kultura",         dept:"Ekonomika",     place:"Zimní stadion",       phone:"",            landline:"386 107 117", email:"jungwirtovav@kszcb.cz" },
+  { name:"Lenka Turečková",                 position:"Ekonomický náměstek",                           oblast:"Sport",           dept:"Ekonomické",     place:"Zimní stadion",       phone:"602 248 178", landline:"386 107 102", email:"tureckoval@kszcb.cz" },
+  { name:"Michaela Hotová",                 position:"Hlavní účetní",                                 oblast:"Sport",           dept:"Ekonomické",     place:"Zimní stadion",       phone:"739 967 913", landline:"386 107 116", email:"hotovam@kszcb.cz" },
+  { name:"Iveta Poutníková",                position:"Finanční účetní",                               oblast:"Sport",           dept:"Ekonomické",     place:"Zimní stadion",       phone:"606 715 892", landline:"386 107 115", email:"poutnikovai@kszcb.cz" },
+  { name:"Veronika Jungwirtová",            position:"Účetní",                                        oblast:"Kultura",         dept:"Ekonomické",     place:"Zimní stadion",       phone:"",            landline:"386 107 117", email:"jungwirtovav@kszcb.cz" },
   { name:"Bc. Jarmila Němcová",             position:"Referent majetku",                              oblast:"Sport",           dept:"Administrativa", place:"Plavecký stadion",    phone:"727 959 665", landline:"386 107 142", email:"nemcovaj@kszcb.cz" },
-  { name:"Adéla Vojáčková",                 position:"Administrativní pracovník",                     oblast:"Celá organizace", dept:"Administrativa", place:"Zimní stadion",       phone:"723 028 685", landline:"386 107 113", email:"avojackova@kszcb.cz" },
-
+  
   // ── SPORT – Vedení / Admin ─────────────────────────────────
-  { name:"Ing. Jaroslav Masař",             position:"Provozní náměstek",                             oblast:"Sport",           dept:["Vedení" , "Provoz"],         place:"Plavecký stadion",    phone:"602 648 251", landline:"386 107 141", email:"masarj@kszcb.cz" },
-  { name:"Bc. Petr Vokroj",                 position:"Projektový a koordinační manažer",              oblast:"Sport",           dept:"Správa", place:"Sportovní hala",      phone:"702 089 258", landline:"386 107 180", email:"vokrojp@kszcb.cz" },
+  { name:"Ing. Jaroslav Masař",             position:"Provozní náměstek",                             oblast:"Sport",           dept:"Vedení",         place:"Plavecký stadion",    phone:"602 648 251", landline:"386 107 141", email:"masarj@kszcb.cz" },
+  { name:"Bc. Petr Vokroj",                 position:"Projektový a koordinační manažer",              oblast:"Sport",           dept:"Administrativa", place:"Sportovní hala",      phone:"702 089 258", landline:"386 107 180", email:"vokrojp@kszcb.cz" },
   { name:"Zdeňka Hambergerová",             position:"Provozní manažer",                              oblast:"Kultura",         dept:"Správa",         place:"Sportovní hala",      phone:"602 616 976", landline:"386 107 185", email:"hambergerovaz@kszcb.cz" },
-  { name:"Ing. Nikola Járová",              position:"Ekonom provozu",                                oblast:"Kultura",         dept:"Ekonomika",     place:"",       phone:"722 983 934", landline:"",            email:"jarovan@kszcb.cz" },
+  { name:"Ing. Nikola Járová",              position:"Ekonom provozu",                                oblast:"Kultura",         dept:"Účetnictví",     place:"",       phone:"722 983 934", landline:"",            email:"jarovan@kszcb.cz" },
 
   // Plavčík
   { name:"Hynek Chlumecký",                 position:"Úsekový vedoucí Plavčík",                       oblast:"Sport",           dept:"Provoz",         place:"Plavecký stadion",  phone:"", landline:"386 107 146", email:"" },
@@ -431,11 +432,11 @@ const oblastColors = {
 const deptColors = {
   "Vedení":         { bg:"#1d2c35", text:"#fff" },
   "Administrativa": { bg:"#455a64", text:"#fff" },
-  "Ekonomika":      { bg:"#2e7d5e", text:"#fff" },
+  "Ekonomické":     { bg:"#2e7d5e", text:"#fff" },
   "Personální":     { bg:"#7b3fa0", text:"#fff" },
   "Provoz":         { bg:"#e8a428", text:"#1a1a2e" },
   "Edukace":        { bg:"#1565c0", text:"#fff" },
-  "Umění":          { bg:"#ad1457", text:"#fff" },
+  "Kurátorství":    { bg:"#ad1457", text:"#fff" },
   "Správa":         { bg:"#4e342e", text:"#fff" },
   "Produkce":       { bg:"#c0392b", text:"#fff" },
   "IT":             { bg:"#f5424b", text:"#fff" },
@@ -444,6 +445,21 @@ const deptColors = {
 
 const avatarPalette = ["#0f1f3d","#1565c0","#2e7d5e","#7b3fa0","#c0392b","#e67e22","#16a085","#8e44ad"];
 
+
+function lastName(name) {
+  const tituly = new Set([
+    "ing","mgr","bc","bca","mga","mba","phd","doc","prof",
+    "judr","mudr","rndr","paeddr","thdr","thlic","dipl",
+    "dis","msc","llm","dr"
+  ]);
+  const parts = name
+    .replace(/[.,]/g, " ")
+    .trim()
+    .split(/\s+/)
+    .filter(p => p.length > 0 && !tituly.has(p.toLowerCase()));
+  // Poslední slovo = příjmení (nebo dvojité příjmení – poslední dvě slova)
+  return parts.length > 0 ? parts[parts.length - 1] : name;
+}
 function initials(name) {
   const tituly = new Set([
     "ing","mgr","bc","bca","mga","mba","phd","doc","prof",
@@ -483,7 +499,8 @@ function render() {
   });
 
   filtered.sort((a, b) => {
-    const va = a[sortCol] || "", vb = b[sortCol] || "";
+    const va = sortCol === "name" ? lastName(a.name) : (a[sortCol] || "");
+    const vb = sortCol === "name" ? lastName(b.name) : (b[sortCol] || "");
     return sortAsc ? va.localeCompare(vb, "cs") : vb.localeCompare(va, "cs");
   });
 
@@ -528,7 +545,8 @@ function render() {
       <td style="font-size:13px;color:var(--muted)">${e.place || "—"}</td>
       <td>${phoneCell}</td>
       <td>${landlineCell}</td>
-      <td>${emailCell}</td>`;
+      <td>${emailCell}</td>
+      `;
     tbody.appendChild(tr);
 
     // ── Mobilní karta ──────────────────────────────
@@ -560,7 +578,8 @@ function render() {
         <span class="badge" style="background:${dc2.bg};color:${dc2.text}">${e.dept}</span>
         ${e.place ? `<span class="card-place">📍 ${e.place}</span>` : ""}
       </div>
-      ${contactRows ? `<div class="card-contacts">${contactRows}</div>` : ""}`;
+      ${contactRows ? `<div class="card-contacts">${contactRows}</div>` : ""}
+      `;
 
     cardList.appendChild(card);
   });
