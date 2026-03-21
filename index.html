@@ -802,6 +802,38 @@ function switchTab(tab) {
     btns[1].classList.add('active');
   }
 }
+// ── PDF BUDOVY ───────────────────────────────────────────────────────────────
+function exportBuildingsPdf() {
+  document.getElementById('print-date').textContent =
+    new Date().toLocaleDateString('cs-CZ');
+  document.getElementById('buildings-print').classList.add('print-active');
+  document.getElementById('employees-print').classList.remove('print-active');
+  window.print();
+  document.getElementById('buildings-print').classList.remove('print-active');
+}
+
+// ── PDF ZAMĚSTNANCI ──────────────────────────────────────────────────────────
+function exportEmployeesPdf() {
+  const sorted = allSorted();
+  const tbody = document.getElementById('ep-tbody');
+  tbody.innerHTML = sorted.map(e => {
+    const tel = [e.phone, e.landline].filter(Boolean).join(' / ');
+    return `<tr>
+      <td>${e.name || ''}</td>
+      <td>${e.position || ''}</td>
+      <td>${e.dept || ''}</td>
+      <td>${e.place || ''}</td>
+      <td>${tel}</td>
+      <td>${e.email || ''}</td>
+    </tr>`;
+  }).join('');
+  document.getElementById('ep-date').textContent =
+    new Date().toLocaleDateString('cs-CZ');
+  document.getElementById('employees-print').classList.add('print-active');
+  document.getElementById('buildings-print').classList.remove('print-active');
+  window.print();
+  document.getElementById('employees-print').classList.remove('print-active');
+}
 
 </script>
 
